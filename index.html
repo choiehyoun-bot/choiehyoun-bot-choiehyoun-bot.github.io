@@ -1,67 +1,122 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>최이현 전시 안내</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>돌의 내면 전시</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Noto Sans KR', sans-serif;
-      background: linear-gradient(135deg, #111, #333);
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
+      padding: 0;
+      font-family: "Noto Sans KR", sans-serif;
+      background-color: #fafafa;
+      color: #222;
     }
 
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
+    header {
+      background-color: #111;
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 2rem;
+      font-weight: bold;
       letter-spacing: 2px;
     }
 
-    p {
-      font-size: 1.2rem;
-      color: #ccc;
-      margin-bottom: 2rem;
+    main {
+      text-align: center;
+      padding: 60px 20px;
     }
 
-    a.button {
+    main h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    main p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #555;
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+
+    .btn {
       display: inline-block;
-      background-color: #fff;
-      color: #111;
-      padding: 14px 28px;
+      background-color: #111;
+      color: #fff;
+      padding: 14px 32px;
       border-radius: 30px;
       text-decoration: none;
-      font-weight: bold;
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
+      font-size: 1rem;
+      transition: background-color 0.3s ease, transform 0.2s ease;
     }
 
-    a.button:hover {
-      background-color: #ffcc00;
-      color: #000;
+    .btn:hover {
+      background-color: #444;
       transform: scale(1.05);
     }
 
+    .preview {
+      margin-top: 60px;
+    }
+
+    .preview img {
+      width: 250px;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease;
+    }
+
+    .preview img:hover {
+      transform: scale(1.03);
+    }
+
     footer {
-      position: absolute;
-      bottom: 20px;
+      text-align: center;
+      padding: 20px;
+      background-color: #111;
+      color: white;
+      margin-top: 60px;
       font-size: 0.9rem;
-      color: #888;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        font-size: 1.5rem;
+      }
+
+      main h2 {
+        font-size: 1.4rem;
+      }
+
+      .btn {
+        padding: 12px 26px;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>돌 전시 안내</h1>
-  <p>최이현의 전시 공간에 오신 것을 환영합니다.<br>아래 버튼을 눌러 갤러리를 감상해보세요.</p>
+  <header>돌의 내면 전시</header>
 
-  <a href="gallery.html" class="button">갤러리로 이동 ➜</a>
+  <main>
+    <h2>자연이 빚은 시간의 조각</h2>
+    <p>
+      돌은 수천 년의 시간 속에서 자연의 손길을 받아온 존재입니다.<br>
+      이번 전시는 돌의 표면 너머, 그 내면의 이야기를 사진으로 담았습니다.
+    </p>
 
-  <footer>© 2025 최이현 | 전시 프로젝트</footer>
+    <a href="gallery.html" class="btn">갤러리 보기</a>
+
+    <div class="preview">
+      <img src="/assets/images/exhibit/stone1.jpg" alt="돌의 내면 미리보기" />
+    </div>
+  </main>
+
+  <footer>
+    © 2025 돌의 내면 전시 | Created by 최이현
+  </footer>
 </body>
 </html>
