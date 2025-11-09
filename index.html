@@ -3,101 +3,125 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>돌의 내면 Exhibition</title>
+  <title>돌의 내면 | The Inner Life of Stones</title>
   <style>
     body {
-      font-family: 'Noto Sans KR', sans-serif;
       margin: 0;
-      background-color: #fafafa;
-      color: #222;
+      font-family: "Noto Sans KR", sans-serif;
+      background-color: #f6f6f6;
+      color: #333;
       text-align: center;
-      line-height: 1.6;
     }
+
     header {
-      background: #000;
-      color: #fff;
-      padding: 25px 0;
-      font-size: 1.8em;
-      letter-spacing: 1px;
+      background-color: #111;
+      color: white;
+      padding: 1.5rem 0;
+      font-size: 2rem;
+      letter-spacing: 2px;
     }
-    .lang-toggle {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: #fff;
-      border: 1px solid #ccc;
-      border-radius: 20px;
-      padding: 6px 12px;
-      cursor: pointer;
-      font-size: 0.9em;
-      transition: 0.3s;
-    }
-    .lang-toggle:hover {
-      background: #000;
-      color: #fff;
-    }
-    img {
-      width: 80%;
-      max-width: 400px;
+
+    .poster {
+      width: 100%;
+      max-width: 800px;
+      margin: 2rem auto;
       border-radius: 10px;
-      margin: 25px 0;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-    p {
-      font-size: 1.05em;
-      margin: 12px auto;
-      width: 85%;
-      max-width: 600px;
-    }
-    em {
       display: block;
-      margin-top: 25px;
-      font-style: italic;
-      color: #555;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     }
-    .button {
-      display: inline-block;
-      background: #000;
-      color: #fff;
-      padding: 12px 24px;
-      border-radius: 10px;
-      margin-top: 25px;
+
+    .desc {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin: 1.5rem auto;
+      max-width: 700px;
+      padding: 0 1rem;
+    }
+
+    .buttons {
+      margin-top: 2rem;
+    }
+
+    a.button {
       text-decoration: none;
-      font-size: 1.1em;
+      color: white;
+      background-color: #111;
+      padding: 0.8rem 1.5rem;
+      border-radius: 30px;
+      margin: 0.5rem;
+      display: inline-block;
       transition: 0.3s;
     }
-    .button:hover {
-      background: #444;
+
+    a.button:hover {
+      background-color: #333;
+    }
+
+    .lang-toggle {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #777;
+      cursor: pointer;
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #aaa;
+      padding-bottom: 2rem;
     }
   </style>
 </head>
+
 <body>
-  <header>돌의 내면 Exhibition</header>
-  <div class="lang-toggle" onclick="toggleLang()">ENG / 한국어</div>
+  <header id="title">돌의 내면</header>
+  <img src="assets/images/exhibit/poster.jpg" alt="전시 포스터" class="poster">
 
-  <section id="kr">
-    <img src="https://choiehyoun-bot.github.io/assets/images/exhibit/poster.jpg" alt="전시 포스터">
-    <p>세상에 존재하는 모든 돌에는 저마다의 이야기가 숨겨져 있습니다.</p>
-    <p>이번 전시는 ‘돌의 내면’을 통해 고요함과 감정을 시각적으로 탐구합니다.</p>
-    <em>“시간이 깎은 표면 속엔, 인간보다 깊은 숨이 있다.”</em>
-    <a href="gallery.html" class="button">작품 보러가기</a>
-  </section>
+  <p class="desc" id="desc">
+    보이지 않는 돌의 감정을 마주하다.  
+    이 전시는 돌이 품은 내면의 이야기와 고요한 시간을 시각적으로 탐구합니다.  
+    관찰의 시선을 거두면, 비로소 들려오는 돌의 속삭임을 느껴보세요.
+  </p>
 
-  <section id="en" style="display:none;">
-    <img src="https://choiehyoun-bot.github.io/assets/images/exhibit/poster.jpg" alt="Exhibition Poster">
-    <p>Every stone in the world holds its own untold story.</p>
-    <p>This exhibition, <strong>“Inside the Stone”</strong>, explores serenity and emotion through visual interpretation.</p>
-    <em>“Within the time-worn surface lies a breath deeper than humanity.”</em>
-    <a href="gallery.html" class="button">View Gallery</a>
-  </section>
+  <div class="buttons">
+    <a href="gallery.html" class="button" id="gallery-btn">갤러리 보기</a>
+    <a href="curation.html" class="button" id="curation-btn">큐레이터의 시선</a>
+  </div>
+
+  <div class="lang-toggle" id="lang-toggle">🌐 English Version</div>
+
+  <footer>© 2025 CHOI EHYOUN | The Inner Life of Stones</footer>
 
   <script>
-    function toggleLang() {
-      const kr = document.getElementById('kr');
-      const en = document.getElementById('en');
-      kr.style.display = kr.style.display === 'none' ? 'block' : 'none';
-      en.style.display = en.style.display === 'none' ? 'block' : 'none';
-    }
+    const langToggle = document.getElementById('lang-toggle');
+    const title = document.getElementById('title');
+    const desc = document.getElementById('desc');
+    const galleryBtn = document.getElementById('gallery-btn');
+    const curationBtn = document.getElementById('curation-btn');
+
+    let lang = 'ko';
+
+    langToggle.addEventListener('click', () => {
+      if (lang === 'ko') {
+        title.textContent = "The Inner Life of Stones";
+        desc.innerHTML = `Facing the unseen emotions of stones.<br>
+          This exhibition explores the silent, timeless stories within stones.<br>
+          When observation fades, their whispers begin to emerge.`;
+        galleryBtn.textContent = "View Gallery";
+        curationBtn.textContent = "Curator's Notes";
+        langToggle.textContent = "🌐 한국어 보기";
+        lang = 'en';
+      } else {
+        title.textContent = "돌의 내면";
+        desc.innerHTML = `보이지 않는 돌의 감정을 마주하다.<br>
+          이 전시는 돌이 품은 내면의 이야기와 고요한 시간을 시각적으로 탐구합니다.<br>
+          관찰의 시선을 거두면, 비로소 들려오는 돌의 속삭임을 느껴보세요.`;
+        galleryBtn.textContent = "갤러리 보기";
+        curationBtn.textContent = "큐레이터의 시선";
+        langToggle.textContent = "🌐 English Version";
+        lang = 'ko';
+      }
+    });
   </script>
 </body>
 </html>
