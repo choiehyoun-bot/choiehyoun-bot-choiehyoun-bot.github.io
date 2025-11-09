@@ -3,120 +3,115 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>돌의 내면 전시</title>
+  <title>돌의 내면 – Exhibition of Stones</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
       font-family: "Noto Sans KR", sans-serif;
       background-color: #fafafa;
       color: #222;
+      text-align: center;
     }
 
     header {
       background-color: #111;
       color: #fff;
-      text-align: center;
-      padding: 2rem 1rem;
-      font-size: 2rem;
-      font-weight: bold;
+      padding: 1.5rem 0;
+      font-size: 1.8rem;
       letter-spacing: 2px;
     }
 
-    main {
-      text-align: center;
-      padding: 60px 20px;
-    }
-
-    main h2 {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      color: #333;
-    }
-
-    main p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: #555;
-      max-width: 600px;
-      margin: 0 auto 40px;
-    }
-
-    .btn {
-      display: inline-block;
-      background-color: #111;
-      color: #fff;
-      padding: 14px 32px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-size: 1rem;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-
-    .btn:hover {
-      background-color: #444;
-      transform: scale(1.05);
-    }
-
-    .preview {
-      margin-top: 60px;
-    }
-
-    .preview img {
-      width: 250px;
-      height: auto;
-      border-radius: 16px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-      transition: transform 0.3s ease;
-    }
-
-    .preview img:hover {
-      transform: scale(1.03);
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #111;
-      color: white;
-      margin-top: 60px;
+    .lang-toggle {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 0.4rem 0.8rem;
+      cursor: pointer;
       font-size: 0.9rem;
     }
 
-    @media (max-width: 600px) {
-      header {
-        font-size: 1.5rem;
-      }
-
-      main h2 {
-        font-size: 1.4rem;
-      }
-
-      .btn {
-        padding: 12px 26px;
-      }
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
     }
+
+    img.poster {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    p.desc {
+      font-size: 1.1rem;
+      margin-top: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .emotion {
+      margin-top: 1.5rem;
+      font-style: italic;
+      color: #555;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.8rem 1.4rem;
+      background-color: #111;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .button:hover {
+      background-color: #444;
+    }
+
   </style>
 </head>
 <body>
-  <header>돌의 내면 전시</header>
+  <header>돌의 내면 Exhibition</header>
+  <button class="lang-toggle" onclick="toggleLang()">ENG / 한글</button>
 
   <main>
-    <h2>자연이 빚은 시간의 조각</h2>
-    <p>
-      돌은 수천 년의 시간 속에서 자연의 손길을 받아온 존재입니다.<br>
-      이번 전시는 돌의 표면 너머, 그 내면의 이야기를 사진으로 담았습니다.
+    <img src="assets/images/exhibit/poster.jpg" alt="전시 포스터" class="poster" />
+
+    <p class="desc" id="desc-ko">
+      세상에 존재하는 모든 돌에는 저마다의 이야기가 숨어 있습니다.<br />
+      이번 전시는 ‘돌의 내면’을 통해 고요함과 감정을 시각적으로 탐구합니다.
+    </p>
+    <p class="desc" id="desc-en" style="display:none;">
+      Every stone holds a hidden story.<br />
+      This exhibition explores the quiet emotions within the essence of stone.
     </p>
 
-    <a href="gallery.html" class="btn">갤러리 보기</a>
+    <p class="emotion" id="emotion-line">
+      "시간이 깎은 표면 속엔, 인간보다 깊은 숨이 있다."
+    </p>
 
-    <div class="preview">
-      <img src="/assets/images/exhibit/stone1.jpg" alt="돌의 내면 미리보기" />
-    </div>
+    <a href="gallery.html" class="button" id="to-gallery-ko">작품 보러가기</a>
+    <a href="gallery.html" class="button" id="to-gallery-en" style="display:none;">View Gallery</a>
   </main>
 
-  <footer>
-    © 2025 돌의 내면 전시 | Created by 최이현
-  </footer>
+  <script>
+    function toggleLang() {
+      const koDesc = document.getElementById("desc-ko");
+      const enDesc = document.getElementById("desc-en");
+      const toKo = document.getElementById("to-gallery-ko");
+      const toEn = document.getElementById("to-gallery-en");
+
+      const isKorean = koDesc.style.display !== "none";
+
+      koDesc.style.display = isKorean ? "none" : "block";
+      enDesc.style.display = isKorean ? "block" : "none";
+      toKo.style.display = isKorean ? "none" : "inline-block";
+      toEn.style.display = isKorean ? "inline-block" : "none";
+    }
+  </script>
 </body>
 </html>
