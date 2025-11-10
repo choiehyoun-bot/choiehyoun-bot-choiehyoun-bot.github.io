@@ -1,143 +1,38 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>큐레이션 | 광물 속의 빛나는 내면</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: "Noto Sans KR", sans-serif;
-      background-color: #f9f9f9;
-      color: #111;
-      line-height: 1.6;
-    }
-    header {
-      background-color: #111;
-      color: white;
-      text-align: center;
-      padding: 1.5rem 0;
-      font-size: 1.8rem;
-      position: relative;
-    }
-    #lang-toggle {
-      position: absolute;
-      right: 20px;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: white;
-      color: #111;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    main {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 1rem 1.5rem;
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    h2 {
-      border-left: 4px solid #111;
-      padding-left: 10px;
-    }
-    p {
-      margin-bottom: 1.2rem;
-    }
-    .quote {
-      font-style: italic;
-      text-align: center;
-      margin: 2rem 0;
-      color: #555;
-    }
-    a.button {
-      display: inline-block;
-      margin-top: 1.5rem;
-      padding: 0.8rem 1.5rem;
-      background-color: #111;
-      color: white;
-      text-decoration: none;
-      border-radius: 10px;
-      transition: 0.2s;
-      font-weight: bold;
-    }
-    a.button:hover {
-      background-color: #333;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <span id="title-ko">광물 속의 빛나는 내면</span>
-    <span id="title-en" style="display:none;">The Radiant Inner Nature of Minerals</span>
-    <button id="lang-toggle">EN</button>
+    <h1 id="title-ko">큐레이션</h1>
+    <h1 id="title-en" style="display:none;">Curation</h1>
+    <button id="langToggle">English</button>
   </header>
 
   <main>
-    <section id="ko-content">
-      <h2>전시 개요</h2>
-      <p>
-        이번 전시는 자연 속의 광물이 가진 내면의 빛과 질감을 탐구합니다.  
-        거칠고 불완전한 외형 속에서도 고유한 아름다움을 간직한 광물은  
-        인간의 내면과 닮아 있습니다. 각 작품은 그 내면의 에너지를 시각적으로 드러내며,  
-        ‘빛’이라는 상징을 통해 존재의 본질을 다시 바라보게 합니다.
+    <section>
+      <p id="desc-ko">
+        각 광물은 오랜 시간의 압력과 변화를 견디며 자신만의 형태를 만들어냅니다.<br>
+        이번 큐레이션은 그 과정 속의 ‘빛’을 시각적으로 탐구합니다.
       </p>
-
-      <h2>작가의 말</h2>
-      <p>
-        “나는 광물의 표면보다, 그 속에서 반짝이는 고요한 생명을 본다.  
-        그것은 완벽하지 않지만, 그래서 더 진실하다.”  
+      <p id="desc-en" style="display:none;">
+        Each mineral endures pressure and change over time, shaping its unique form.<br>
+        This curation visually explores the “light” within that transformation.
       </p>
-
-      <p class="quote">― 작가 이현</p>
     </section>
-
-    <section id="en-content" style="display:none;">
-      <h2>Exhibition Overview</h2>
-      <p>
-        This exhibition explores the inner light and texture of natural minerals.  
-        Within their rough and imperfect forms lies a beauty that mirrors the human spirit.  
-        Each piece reveals the energy within, inviting us to rediscover the essence of existence  
-        through the symbol of light.
-      </p>
-
-      <h2>Artist’s Note</h2>
-      <p>
-        “I see a quiet life shimmering within the mineral’s core.  
-        It is not perfect — and that is why it feels true.”
-      </p>
-
-      <p class="quote">― Artist Lee Hyun</p>
-    </section>
-
-    <a href="index.html" class="button" id="btn-main-ko">메인으로</a>
-    <a href="index.html" class="button" id="btn-main-en" style="display:none;">Back to Main</a>
   </main>
 
   <script>
-    const langToggle = document.getElementById("lang-toggle");
-    const titleKo = document.getElementById("title-ko");
-    const titleEn = document.getElementById("title-en");
-    const koContent = document.getElementById("ko-content");
-    const enContent = document.getElementById("en-content");
-    const mainKo = document.getElementById("btn-main-ko");
-    const mainEn = document.getElementById("btn-main-en");
-
-    let lang = "ko";
-    langToggle.addEventListener("click", () => {
-      lang = lang === "ko" ? "en" : "ko";
-      const isKo = lang === "ko";
-      titleKo.style.display = isKo ? "inline" : "none";
-      titleEn.style.display = isKo ? "none" : "inline";
-      koContent.style.display = isKo ? "block" : "none";
-      enContent.style.display = isKo ? "none" : "block";
-      mainKo.style.display = isKo ? "inline-block" : "none";
-      mainEn.style.display = isKo ? "none" : "inline-block";
-      langToggle.textContent = isKo ? "EN" : "KR";
+    const toggle = document.getElementById("langToggle");
+    toggle.addEventListener("click", () => {
+      const isKorean = document.getElementById("title-ko").style.display !== "none";
+      document.querySelectorAll("[id$='-ko']").forEach(el => el.style.display = isKorean ? "none" : "");
+      document.querySelectorAll("[id$='-en']").forEach(el => el.style.display = isKorean ? "" : "none");
+      toggle.textContent = isKorean ? "한국어" : "English";
     });
   </script>
 </body>
