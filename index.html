@@ -3,80 +3,122 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>돌의 내면 전시</title>
+  <title>광물 속의 빛나는 내면</title>
   <style>
     body {
       margin: 0;
       font-family: "Noto Sans KR", sans-serif;
-      background-color: #f6f6f6;
+      background-color: #f5f5f5;
       color: #111;
       text-align: center;
     }
     header {
-      padding: 4rem 1rem 2rem;
+      background-color: #111;
+      color: white;
+      padding: 1.5rem 0;
+      font-size: 2rem;
+      position: relative;
     }
-    h1 {
-      font-size: 2.2rem;
-      letter-spacing: 2px;
-      margin-bottom: 1rem;
+    #lang-toggle {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: white;
+      color: #111;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
     }
-    p.subtitle {
-      font-size: 1rem;
-      color: #555;
-      margin-bottom: 3rem;
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
     }
-    .btn-container {
-      display: flex;
-      justify-content: center;
-      gap: 1.2rem;
-      flex-wrap: wrap;
+    img {
+      width: 100%;
+      border-radius: 12px;
+      margin-top: 1rem;
+    }
+    p {
+      line-height: 1.6;
+      font-size: 1.05rem;
     }
     a.button {
-      text-decoration: none;
+      display: inline-block;
+      margin: 1rem 0.4rem;
+      padding: 0.8rem 1.6rem;
       background-color: #111;
-      color: #fff;
-      padding: 0.9rem 1.6rem;
-      border-radius: 30px;
-      font-size: 1rem;
-      transition: background 0.3s ease;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: 0.2s ease;
+      font-weight: bold;
     }
     a.button:hover {
       background-color: #333;
-    }
-    .lang-switch {
-      margin-top: 2rem;
-      font-size: 0.9rem;
-    }
-    .lang-switch a {
-      color: #555;
-      text-decoration: none;
-      border: 1px solid #ccc;
-      padding: 0.4rem 1rem;
-      border-radius: 20px;
-      transition: background 0.3s ease;
-    }
-    .lang-switch a:hover {
-      background-color: #ddd;
-    }
-    footer {
-      margin-top: 4rem;
-      font-size: 0.8rem;
-      color: #777;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>돌의 내면 전시</h1>
-    <p class="subtitle">단단함 속에 숨은 감정의 결을 들여다보다.</p>
-    <div class="btn-container">
-      <a href="gallery.html" class="button">갤러리 보기</a>
-      <a href="curation.html" class="button">큐레이션 보기</a>
-    </div>
-    <div class="lang-switch">
-      <a href="index-en.html">English</a>
-    </div>
+    <span id="title-ko">광물 속의 빛나는 내면</span>
+    <span id="title-en" style="display:none;">The Radiant Inner Nature of Minerals</span>
+    <button id="lang-toggle">EN</button>
   </header>
-  <footer>© 2025 최이현 작가</footer>
+
+  <main>
+    <img src="assets/images/exhibit/poster.jpg" alt="전시 포스터" />
+    <p id="desc-ko">
+      이 전시는 광물 속에 깃든 빛과 감정을 탐구합니다.<br />
+      차가운 돌 속에서도 따스하게 스며드는 생명의 흔적을 느껴보세요.
+    </p>
+    <p id="desc-en" style="display:none;">
+      This exhibition explores the light and emotion that dwell within minerals.<br />
+      Discover traces of life shining softly within cold stone.
+    </p>
+
+    <a href="gallery.html" class="button" id="btn-gallery-ko">갤러리</a>
+    <a href="curation.html" class="button" id="btn-curation-ko">큐레이션</a>
+    <a href="qr.html" class="button" id="btn-qr-ko">QR 안내</a>
+
+    <a href="gallery.html" class="button" id="btn-gallery-en" style="display:none;">Gallery</a>
+    <a href="curation.html" class="button" id="btn-curation-en" style="display:none;">Curation</a>
+    <a href="qr.html" class="button" id="btn-qr-en" style="display:none;">QR Guide</a>
+  </main>
+
+  <script>
+    const langToggle = document.getElementById("lang-toggle");
+    const elements = {
+      titleKo: document.getElementById("title-ko"),
+      titleEn: document.getElementById("title-en"),
+      descKo: document.getElementById("desc-ko"),
+      descEn: document.getElementById("desc-en"),
+      galleryKo: document.getElementById("btn-gallery-ko"),
+      galleryEn: document.getElementById("btn-gallery-en"),
+      curKo: document.getElementById("btn-curation-ko"),
+      curEn: document.getElementById("btn-curation-en"),
+      qrKo: document.getElementById("btn-qr-ko"),
+      qrEn: document.getElementById("btn-qr-en")
+    };
+    let lang = "ko";
+    langToggle.addEventListener("click", () => {
+      lang = lang === "ko" ? "en" : "ko";
+      const isKo = lang === "ko";
+      langToggle.textContent = isKo ? "EN" : "KR";
+      elements.titleKo.style.display = isKo ? "inline" : "none";
+      elements.titleEn.style.display = isKo ? "none" : "inline";
+      elements.descKo.style.display = isKo ? "block" : "none";
+      elements.descEn.style.display = isKo ? "none" : "block";
+      elements.galleryKo.style.display = isKo ? "inline-block" : "none";
+      elements.galleryEn.style.display = isKo ? "none" : "inline-block";
+      elements.curKo.style.display = isKo ? "inline-block" : "none";
+      elements.curEn.style.display = isKo ? "none" : "inline-block";
+      elements.qrKo.style.display = isKo ? "inline-block" : "none";
+      elements.qrEn.style.display = isKo ? "none" : "inline-block";
+    });
+  </script>
 </body>
 </html>
